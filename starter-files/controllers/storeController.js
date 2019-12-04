@@ -178,3 +178,8 @@ exports.getHearts = async (req, res) => {
     stores
   });
 };
+
+exports.storesApi = async (req, res) => {
+  const stores = await Store.find();
+  res.json(stores);
+};

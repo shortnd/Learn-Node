@@ -9,7 +9,8 @@ const passport = require('passport');
 const promisify = require('es6-promisify');
 const flash = require('connect-flash');
 const expressValidator = require('express-validator');
-const routes = require('./routes/index');
+const web = require('./routes/web');
+const api = require('./routes/api');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
 require('./handlers/passport');
@@ -67,7 +68,10 @@ app.use((req, res, next) => {
 });
 
 // After allllll that above middleware, we finally handle our own routes!
-app.use('/', routes);
+// app.use('/', routes);
+// Web Routes
+app.use('/', web);
+app.use('/api/', api);
 
 // If that above routes didnt work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);
