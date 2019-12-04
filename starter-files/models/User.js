@@ -23,7 +23,10 @@ const userSchema = new mongoose.Schema({
     trim: true
   },
   resetPasswordToken: String,
-  resetPasswordExpires: Date
+  resetPasswordExpires: Date,
+  hearts: [
+    { type: mongoose.Schema.Types.ObjectId, ref: 'Store' }
+  ]
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
