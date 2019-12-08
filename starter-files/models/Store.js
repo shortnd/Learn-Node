@@ -126,7 +126,7 @@ storeSchema.virtual('reviews', {
 });
 
 function autopopulate(next) {
-  this.populate('reviews');
+  this.populate('reviews author');
   next();
 };
 
